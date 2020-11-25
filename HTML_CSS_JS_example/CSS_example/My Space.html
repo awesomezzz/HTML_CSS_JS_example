@@ -1,0 +1,408 @@
+<!-- HTML4改成HTML5時，將doctype改成大寫
+<!doctype html>
+ -->
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>My Space</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!--由外部添加css的style元素進來(此方式可提高整體網站執行效率)-->
+    <!--連接到的地方為stylesheet(rel)，文檔格式為css檔(type)，並告訴此檔案在哪個資料夾下(href)-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+ 
+</head>
+
+<body>
+    
+    <!-- ---------------------------Header--------------------------- -->
+    <header>
+      
+      <!--透過DIV 標籤可以在網頁中創造各個不同的區塊。-->
+      <!--定義容器-->
+      <div class="container">
+          
+        <!--放入menu，我們使用unorder list定義，會再透過css變成menu-->
+        <ul class="navbar">
+            <!--Hi與sign的部分空格部分比較不一樣，所以另設id-->
+            <li id="singin-style" class="navItem">Hi! <a href="#">Sign in</a> or <a href="#">register</a></li>
+            <li class="navItem"><a href="#">Daily Deals</a></li>
+            <li class="navItem"><a href="#">Sell</a></li>
+            <li class="navItem no-border"><a href="#">Help & Contact</a></li>
+            
+            <!--添加向右對齊的class:navItem float-right-->
+            <li id="cart" class="navItem float-right no-border"><img src="cart.png" alt="cart" title="您的購物車" width="20px"></li>
+            <li id="alert" class="navItem float-right no-border"><img src="alert.png" alt="alert" width="20px"></li>
+            <li class="navItem float-right no-border"><a href="#">My Space</a></li>
+            
+        </ul> 
+       </div>
+        
+    </header>    
+    
+    
+    <!-- ---------------------------Search Forms--------------------------- -->
+    <!--因為要放在同一列上，所以clearfix用來清空右邊來擺放我們的搜尋列;setBGColor用來設定顏色-->
+    <div id="search-bar" class="clearfix setBGColor">
+        <div class="container">
+            <img id="brand" src="brand.png" alt="Space" height="55px">
+            
+            <!--按鈕可使用input方式，但缺點是不能放入文字和圖片；所以我們用button-->
+            <button id="shopping-button" type="button">
+                <p>Shop by category</p>
+                <!--下箭頭圖片-->
+                <img id="arrow" src="arrow.png" alt="arrow" width="20px">
+            </button>    
+            
+            <!--添加搜尋欄位-->
+            <form id="search-form">
+              <!--為了讓所有元素都能夠在同一列上，使用table的table row來做-->
+              <table>
+                  <tr>
+                      <!--加入搜尋列-->
+                      <td>
+                          <input id="search-field" class="text-field" type="text" name="search-content" placeholder="Search for anything">
+                      </td>
+                      <!--創建多選項框-->
+                      <td>
+                          <!--用div區分出來-->
+                          <div id="category-textfield" class="text-field" >
+                              <!--option用select來定義-->
+                              <select class="options" name="cate">
+                                  <!--option的名字若有"&"需要以&amp;表示-->
+                                  <!--默認一開始設的選項加上selected="selected"-->
+                                  <option selected="selected" value="0">All Categoriex</option>
+                                  <option value="1">Antiques</option>
+                                  <option value="2">Art</option>
+                                  <option value="3">Baby</option>
+                                  <option value="4">Business &amp; Industrial</option>
+                              </select>
+                          </div>
+                      </td>
+                      <!--創建Search按鈕-->
+                      <td>
+                          <input class="btn-primary" value="Search" type="submit">
+                      </td>
+                      
+                      <td>
+                          <a href="#" id="advanced-button" title="高級搜索">Advanced</a>
+                      </td>
+                  </tr>
+              </table>  
+              
+            </form>    
+      </div>
+    </div>
+    
+    
+    
+    <!-- ---------------------------Navigation Bar導航部分--------------------------- -->
+    
+    <!--因為跟搜尋列很相似，都有換行的部分，所以都使用class="clearfix setBGColor"-->
+    <nav class="clearfix setBGColor">
+        <!--因為也都要設置寬度，所以我們一樣以div定義一個區域-->
+        <div class="container">
+            <!--像是header一樣，使用unorderlist去完成-->
+            <!--以id來設置list的css，以及也重複應用navbar-->
+            <!--上下邊框由tb-border來製作-->
+            <ul id="navigation-bar" class="navbar tb-border">
+                <!--選項或超連結，使用list來設置-->
+                <!--以及重複應用navItem-->
+                <li class="navItem no-border li-space"><a href="#">Following</a></li>
+                <!--添加一個active給Today-->
+                <li class="navItem no-border li-space"><a href="#">Today</a></li>
+                
+                <!--由於no-border為去除邊框，且內有important，所以級別較高，因此我們需要自加右側邊框-->
+                <div class="divider">
+                </div>
+                
+                
+                <li class="navItem no-border li-space"><a href="#">Fashion</a></li>
+                <li class="navItem no-border li-space"><a href="#">Electronics</a></li>
+                <li class="navItem no-border li-space"><a href="#">Collectibles & Art</a></li>
+                <li class="navItem no-border li-space"><a href="#">Home & Garden</a></li>
+                <li class="navItem no-border li-space"><a href="#">Sporting Goods</a></li>
+                <li class="navItem no-border li-space"><a href="#">Motors</a></li>
+                <li class="navItem no-border li-space"><a href="#">Daily Deals</a></li>
+
+            </ul>
+        </div>
+
+    </nav>
+    
+    
+    <!-- ---------------------------Advertisement廣告部分--------------------------- -->
+    
+    <!--用section去製作-->
+    <!--adSection的部分我們會跟之前的setBGColor、clearfix部分一樣-->
+    <section id="adSection" class="setBGColor clearfix">
+        <div class="container">
+            <!--大圖部分-->
+            <div id="column1">
+                <!--放入圖片-->
+                <div>
+                    <img id= "ad1" class="add-border" src="img/ad1.png" alt="ad1" width="400px">
+                </div>
+                
+            </div>
+            <!--小圖部分-->
+            <div id="column2">
+                <div>
+                    <img id="ad2" class="add-border" src="img/ad2.png" alt="ad2" width="200px">
+                </div>
+                
+                <div>
+                    <img id="ad3" class="add-border" src="img/ad3.png" alt="ad3" width="200px">
+                </div>
+            </div>
+        
+        </div>
+    </section>
+    
+    <!-- ---------------------------Product Section產品部分--------------------------- -->
+    
+    <section id="productSection" class="setBGColor clearfix">
+        <div class="container">
+            <!--用class先去定義標題，因為下面之後還用的到-->
+            <h2 class="hero-heading">Today's Featured Collections</h2>
+            <!--整個產品的部分-->
+            <div id="show-product">
+                
+                <!-----------------------------Product 1----------------------------->
+                
+                <!--第一部份產品區-->
+                <div class="product-section">
+                    <!--產品圖片-->
+                    <div class="porduct-photo">
+                        <!--第一區圖片-->
+                        <div class="photo-column1">
+                            <img id="photo1" src="img/product1.jpg" alt="product1">
+                        </div>
+                        
+                        <!--第二區圖片-->
+                        <div class="photo-column2">
+                            <!--第二區有三附圖，所以再分三區，主要是因為有邊框，可以利用class來控制較方便-->
+                            <div class="thumb">
+                                <!--因為此圖需要個別調整所以class另外設-->
+                                <img class="thumbnail-fix" src="img/thumbnail1_1.jpg" alt="thumbnail1_1">
+                            </div>
+                            
+                            <div class="thumb">
+                                <img class="thumbnail" src="img/thumbnail1_2.jpg" alt="thumbnail1_2">
+                            </div>
+                            
+                            <div class="thumb">
+                                <img class="thumbnail" src="img/thumbnail1_3.jpg" alt="thumbnail1_3">
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <!---------------------------Article----------------------------->
+                    
+                    <article>
+                        <div class="left-col">
+                            <h3 class="title">In a Flash</h3>
+                            <div class="description-container">
+                                <p>GOGOGOOGOGOGOGOGO
+                                    <a href="#" title="閱讀更多">
+                                        <!--以span去定義局部內容，但是以按照inline方式去顯示，而非block-->
+                                        <span class="read-more"></span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="right-col right-col-text">
+                            
+                            <ul class="right-col-container">
+                                <li class="right-col-item">15 items</li>
+                                <li class="right-col-item">by Spacetecheditor</li>
+                                <li class="right-col-item"><a class="active-link" href="#">Shop now</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                    
+                </div>
+                
+                <!-----------------------------Product 1 End----------------------------->
+                
+                <!-----------------------------Product 2----------------------------->
+                
+                <!--第一部份產品區-->
+                <div class="product-section right-section">
+                    <!--產品圖片-->
+                    <div class="porduct-photo">
+                        <!--第一區圖片-->
+                        <div class="photo-column1">
+                            <!--另外定義photo-adjust來調整圖片位置-->
+                            <img id="photo-adjust" src="img/product2.jpg" alt="product2">
+                        </div>
+                        
+                        <!--第二區圖片-->
+                        <div class="photo-column2">
+                            <!--第二區有三附圖，所以再分三區，主要是因為有邊框，可以利用class來控制較方便-->
+                            <div class="thumb">
+                                <!--因為此圖需要個別調整所以class另外設-->
+                                <!--定義一個id來調整此圖片-->
+                                <img id="thumbnail-adjust" class="thumbnail-fix" src="img/thumbnail2_1.jpg" alt="thumbnail2_1">
+                            </div>
+                            
+                            <div class="thumb">
+                                <img class="thumbnail" src="img/thumbnail2_2.jpg" alt="thumbnail2_2">
+                            </div>
+                            
+                            <div class="thumb">
+                                <img class="thumbnail" src="img/thumbnail2_3.jpg" alt="thumbnail2_3">
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <!---------------------------Article----------------------------->
+                    
+                    <article>
+                        <div class="left-col">
+                            <h3 class="title">Culinary Cuteness</h3>
+                            <div class="description-container">
+                                <p>GOGOGOOGOGOGOGOGO
+                                    <a href="#" title="閱讀更多">
+                                        <!--以span去定義局部內容，但是以按照inline方式去顯示，而非block-->
+                                        <span class="read-more"></span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="right-col right-col-text">
+                            
+                            <ul class="right-col-container">
+                                <li class="right-col-item">15 items</li>
+                                <li class="right-col-item">by Spacetecheditor</li>
+                                <li class="right-col-item"><a class="active-link" href="#">Shop now</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                    
+                </div>
+                
+                <!-----------------------------Product 2 End----------------------------->
+            
+            </div>
+        </div>
+    </section>
+    
+    <!-----------------------------Daily Deals----------------------------->
+    
+    <section id="daily-deals" class="clearfix setBGColor">
+        <div class="container">
+            <h2 class="hero-heading">Daily Deals</h2>
+            <!--設置外方框放置小方框-->
+            <div class="box">
+                <!--設置小方框(5個)-->
+                <div class="box-subcontent">
+                    <img class="sale" src="img/1.jpg" alt="sale-pic">
+                    <!--商品文字超連結-->
+                    <a href="#" class="details">good</a>
+                    <!--價格-->
+                    <h4 class="price">TWD 400</h4>
+                </div>
+                <div class="box-subcontent">
+                    <img class="sale" src="img/2.jpg" alt="sale-pic">
+                    <!--商品文字超連結-->
+                    <a href="#" class="details">good</a>
+                    <!--價格-->
+                    <h4 class="price">TWD 400</h4>
+                </div>
+                <div class="box-subcontent">
+                    <img class="sale" src="img/3.jpg" alt="sale-pic">
+                    <!--商品文字超連結-->
+                    <a href="#" class="details">good</a>
+                    <!--價格-->
+                    <h4 class="price">TWD 400</h4>
+                </div>
+                <div class="box-subcontent">
+                    <img class="sale" src="img/4.jpg" alt="sale-pic">
+                    <!--商品文字超連結-->
+                    <a href="#" class="details">good</a>
+                    <!--價格-->
+                    <h4 class="price">TWD 400</h4>
+                </div>
+                <div class="box-subcontent">
+                    <img class="sale" src="img/5.jpg" alt="sale-pic">
+                    <!--商品文字超連結-->
+                    <a href="#" class="details">good</a>
+                    <!--價格-->
+                    <h4 class="price">TWD 400</h4>
+                </div>
+                
+                <!-----------------------------Pagination換頁----------------------------->
+                <!--先創建一個區域，加入clearfix做換行-->
+                <div class="pagination clearfix">
+                    <!--換某頁的符號-->
+                    <div class="pagination-content">
+                        <a href="#"><</a>
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <!--設定第三頁為當前頁-->
+                        <a href="#" class="active">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">></a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-----------------------------Collections----------------------------->
+            <!--在大方框外設置描述-->
+            <div id="collections">
+                <p>Get inspired! Explore all of our <a href="#">Trending Collections</a></p>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-----------------------------Footer 網頁腳的部分----------------------------->
+    
+    <footer>
+        <div class="container">
+            <!--放右側-->
+            <div style="float: right">
+                <p>&copy; 2020 版權 hong.com</p>
+            </div>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

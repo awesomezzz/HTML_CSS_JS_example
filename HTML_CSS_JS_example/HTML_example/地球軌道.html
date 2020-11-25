@@ -1,0 +1,198 @@
+<!-- HTML4改成HTML5時，將doctype改成大寫
+<!doctype html>
+ -->
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>地球軌道</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+        
+        /*因為universe的顯示，開啟網頁會發現html高度只有8然後重複，因此擴大到100%的網頁才是我們要的，而body的顯示部分也是如此*/
+        /*可以將html,body改成星號*，星號代表網頁中所有元素都是如此*/
+        html,body
+        {
+            height: 100%;
+            
+            /*由於會發現地球公轉時，可能會發生超出視窗外，而導致overflow，將之隱藏*/
+            overflow: hidden;
+        }
+        
+        #universe
+        {
+            background: radial-gradient(#555 ,#000);
+        }
+        
+        @keyframes starFlash
+        {
+            /*執行透明度變化*/
+            from{ opacity:1; }
+            to{ opacity: 0.3;}
+        }
+        
+        #stars
+        {
+            height: 100%;
+            background-image: url("stars.png");
+            
+            /*為了讓加入的圖片能夠依照網頁縮放跟著縮放*/
+            background-size: cover;
+            
+            /*建立動畫: starFlash動畫、持續3秒、無限次、交替(讓動畫重新執行時不會太突然)*/
+            animation: starFlash 3s infinite alternate;
+        }
+        
+        /*定義太陽的動畫*/
+        @keyframes sunLight
+        {
+            /*要動的部分是影子，所以裡面放的是box-shadow；而改變的是範圍，所以改變光芒寬度即可*/
+            from{ box-shadow: 0 0 45px #f5c91a; }
+            to{ box-shadow: 0 0 90px #f5c91a; }
+        }
+        
+        #sun
+        {
+            /*先設定一正方形*/
+            width: 200px;
+            height: 200px;
+            /*background-color: orange;*/
+            /*為了讓顏色有三維放射的感覺*/
+            background: radial-gradient(#f5c313, #ec7e08);
+            
+            /*設定絕對位置，在中間*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            
+            /*由於正方形的顯示位置，是由正方形的邊去計算在網頁的中間*/
+            /*所以我們要做調整*/
+            /*向上移動，要加負號才會往上*/
+            margin-top: -100px;
+            margin-left: -100px;
+            
+            /*將正方形變成圓形*/
+            border-radius: 100px;
+            
+            /*加入陰影(向右的光芒、向下的光芒、光芒有多寬、光芒顏色)*/
+            box-shadow: 0 0 45px #f5c91a;
+            
+            /*建立動畫: sunLight動畫、持續5秒、無限次、交替(讓動畫重新執行時不會太突然)*/
+            animation: sunLight 5s infinite alternate;
+        }
+        
+        /*定義地球的動畫*/
+        @keyframes spin
+        {
+            /*transform為變形的一個動畫；rotate為旋轉(0-360度)*/
+            from{ transform: rotate(0);}
+            to{transform: rotate(360deg);}
+        }
+        
+        /*定義地球的軌道*/
+        #earthOrbit
+        {
+            height: 600px;
+            width: 600px;
+            
+            /*定義邊寬(定義完會出現在左下方)(最後可備註掉，因為是軌道)*/
+            /*border: 1px solid red;*/
+            
+            /*定義邊框位置(會發現方形左上點出現在正中間)*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            
+            /*(將方形中心點)移動邊框至中心點*/
+            margin-top: -300px;
+            margin-left: -300px;
+            
+            /*將邊框變成圓形(可以將300px換成100%也有同樣效果)*/
+            border-radius: 300px;
+
+            /*地球公轉由軌道動畫來帶動(動畫名稱、轉動時間、線性速度、無限次)*/
+            animation: spin 30s linear infinite;
+        }
+        
+        #earth
+        {
+            /*定義地球位置到正方形的右上點*/
+            position: absolute;
+            
+            /*將地球移動到正方形左邊的中間點(可將300px改成50%)*/
+            top: 300px;
+            
+            /*向上左移動*/
+            margin-top: -40px;
+            margin-left: -40px;
+            
+            animation: spin 25s linear infinite;
+        }
+        
+        #moonOrbit
+        {
+            width: 120px;
+            height: 120px;
+            
+            /*邊框設置(最後可備註掉，因為是軌道)*/
+            /*border: 1px solid red;*/
+            
+            /*定義邊框位置(會發現方形左上點出現在正中間)*/
+            position: absolute;
+            top: 50%;
+            
+            
+            /*(將方形中心點)移動邊框至中心點*/
+            margin-top: -60px;
+            margin-left: -60px;
+            
+            /*將邊框變成圓形*/
+            border-radius: 100%;
+            
+            /*使用spin動畫*/
+            animation: spin 3s linear infinite;
+        }
+        
+        #moon
+        {
+            width: 30px;
+            height: 30px;
+            
+            /*用background的方式創建一個月亮，radial-gradient的放射性顏色*/
+            background: radial-gradient(#ddd, #888);
+            
+            /*使變成圓形*/
+            border-radius: 100%;
+        }
+        
+    </style>    
+</head>
+
+<body id="universe">
+  <div id= "stars"></div>
+  <div id= "sun"></div>
+  
+  <div id= "earthOrbit">
+      <img id="earth" src="earth.png" alt="earth" width="80px" height="80px">
+      
+      <div id="moonOrbit">
+          
+          <div id="moon"></div>
+          
+      </div>  
+      
+  </div>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+

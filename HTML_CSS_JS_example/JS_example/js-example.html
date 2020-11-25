@@ -1,0 +1,133 @@
+<!--讓網頁有辦法與用戶互動，所以使用JS-->
+<!-- HTML4改成HTML5時，將doctype改成大寫
+<!doctype html>
+ -->
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>追蹤滑鼠軌跡</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!--運用css來呈現不同樣貌-->
+    <style>
+    
+        :root
+        {
+            /*直徑*/
+            --radius: 40px;
+            /*將滑鼠訊息傳給css來做*/
+            --mouse-x;
+            --mouse-y;
+            /*不同光芒放到不同大小，先預設為1，會再由css去定義他*/
+            --factor:1;
+            /*先定義一個scale，不賦予值，會直接由js去運算得到具體結果*/
+            --scale;
+        }
+        
+        /*網頁背景顏色*/
+        body
+        {
+            background-color: #000000;
+        }
+        
+        #ball
+        {
+            width: var(--radius);
+            height: var(--radius);
+            /*此時還是正方形，則用border-radius用成圓角*/
+            border-radius: 50%;
+            /*顏色*/
+            background-color: #FBD771;
+            /*將追蹤鼠標的圓形設為絕對位置*/
+            position: absolute;
+            
+            /*使用transform參數驅動動畫效果設置*/
+            /*移動過程中多少像素*/
+            /*translate(x軸,y軸)*/
+            /*圓球需要移動至鼠標箭頭的正中央*/
+            /*(原點位置為網頁的左上角，向右為x正方向，向下為y負方向)*/
+            /*(圓球個別往負方向方向移動自身半徑即可)*/
+            /*讓--mouse-x成為變量且轉換為像素*/
+            transform: translate(calc(var(--mouse-x) * 1px - var(--radius) / 2), calc(var(--mouse-y) * 1px - var(--radius) / 2 ));
+            
+        }
+        
+        /*三層的光芒css*/
+        .halo
+        {
+            width: var(--radius);
+            height: var(--radius);
+            /*此時還是正方形，則用border-radius用成圓角*/
+            border-radius: 50%;
+            /*顏色*/
+            background-color: #FBD771;
+            /*調整透明度，讓顏色有些區別*/
+            opacity:0.15;
+            /*將追蹤鼠標的圓形設為絕對位置*/
+            position: absolute;
+            
+            /*利用動畫的scale放大並去運算進行*/
+            transform: scale(calc(var(--factor) * var(--scale) ));
+        }
+        
+        /*指向三個孩子去分別設定*/
+        .halo:nth-of-type(1)
+        {
+            --factor:0.3;
+        }
+        .halo:nth-of-type(2)
+        {
+            --factor:0.5;
+        }
+        .halo:nth-of-type(3)
+        {
+            --factor:0.9;
+        }
+        
+        
+    </style>
+ 
+</head>
+
+<body>
+    
+    
+    <div id = "ball">
+        <!--增加三層光芒，所以用三層-->
+        <div class = "halo"></div>
+        <div class = "halo"></div>
+        <div class = "halo"></div>
+    </div>
+    
+    
+    <!--內部的javascript把它獨立出來顯示的一個方式-->
+    <!--會在進入頁面時跳出對話框-->
+    <!--嵌入一個腳本區-->
+    <!--由src來指定腳本-->
+    <script type="text/javascript" src="script.js"></script>
+    
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

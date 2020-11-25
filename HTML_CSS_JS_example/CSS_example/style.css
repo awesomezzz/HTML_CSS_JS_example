@@ -1,0 +1,780 @@
+
+    
+        /*---------------------------Header---------------------------*/
+    
+        /*設置header的過程中會發現有多餘空隙，所以要把多餘的空隙去掉*/
+        body
+        {
+            margin: 0;
+        }
+    
+        /*設置header陰影*/
+        header
+        {
+            /*設置陰影(box-shadow:;右下左上)*/
+            box-shadow: 0 3px 5px #CCCCCC;
+            
+            /*為了將header看起來放置於header正中間*/
+            padding: 9px 0 9px 0;
+            
+            /*因為search bar的設置會導致陰影被覆蓋，於是將header至頂於search bar上*/
+            position: relative;
+            /*放到0層的上方，所以設置為1*/
+            z-index: 1;
+        }
+        
+        .container
+        {
+            width: 1200px;
+            /*居中*/
+            margin: auto;
+        }
+        .navbar
+        {
+            /*把list前面的點去掉*/
+            list-style-type: none;
+            /*字體大小*/
+            font-size: 12px;
+            
+            /*在設置header置中的時候，發現會有多餘的空白，這些空白則是navbar的margin和padding，所以將之去除*/
+            margin: 0;
+            padding: 0;
+        }
+        /*為了不干擾其他可能也會用navItem，所以li.navItem代表list的navItem*/
+        li.navItem
+        {
+            /*顯示在同一列*/
+            display: inline;
+            /*添加文字右側的"|"，其實就是右側邊框*/
+            border-right: 1px solid #777777;
+            
+        }
+        /*在每一項超連結的左右都有空格*/
+        li.navItem a
+        {
+            /*空格順序為上右下左(也可以以0 9px就好，瀏覽器會知道只要左右空格而已)*/
+            padding: 0 9px 0 9px;
+            /*設定超連結文字顏色*/
+            color: #555555;
+            
+        }
+        /*設定超連結不動的狀態沒有底線*/
+        li.navItem a:link
+        {
+            /*設定沒有底線*/
+            text-decoration: none;
+        }
+        /*設定滑鼠移動到該連結，會出現底線，也會改變顏色*/
+        li.navItem a:hover
+        {
+            text-decoration: underline;
+            color: #0654BA;
+        }
+        /*設定Hi與sign的顏色部分的超連結狀態*/
+        #singin-style a:link
+        {
+            color: #0654BA;
+        }
+        /*把另外Hi與sign的超連結中最後一個單字後面，加入空格*/
+        /*注意:last-child指的是最後一個元素，若是第一個元素則是first-child*/
+        #signin-style a:link:last-child
+        {
+            padding-right: 16px;
+        }
+        /*可直接認float-right*/
+        
+        .float-right
+        {
+            /*向右對齊*/
+            float: right;
+        }
+        /*刪除右邊框所使用*/
+        .no-border
+        {
+            border-right: none;
+        }
+        #alert
+        {
+            /*使圖片向上*/
+            margin-top: -5px;
+            /*上下左右空格設置*/
+            padding: 0 15px 0 25px;
+        }
+        #cart
+        {
+            /*使圖片向上*/
+            margin-top: -5px;
+            /*空格設置(padding:上右下左)*/
+            padding: 0 15px 0 25px;
+        }
+        
+        /*---------------------------Search Forms---------------------------*/
+        #search-bar
+        {
+            width: 100%;
+            height: 65px;
+            
+            /*將多餘的東西去除*/
+            overflow: hidden;
+        }
+        /*背景顏色*/
+        .setBGColor
+        {
+            background-color: #F9F9F9;
+        }
+        /*清除右方float屬性，為了使之顯示於同一列*/
+        .clearfix
+        {
+            /*兩邊都清除*/
+            clear: both;
+        }
+        /*圖片置放*/
+        #brand
+        {
+            /*向左對齊*/
+            float: left;
+        }
+        #shopping-button
+        {
+            /*向左對齊*/
+            float: left;
+            /*設定寬度使文字自動換行*/
+            width: 70px;
+            /*文字大小、顏色*/
+            font-size: 14px;
+            color: #555555;
+            /*去除邊框、底色*/
+            border: none;
+            background-color: #F9F9F9;
+            /*讓按鈕右邊多一些空間讓下箭頭圖片得以對位*/
+            margin-right: 15px;
+        }
+        /*下箭頭設定*/
+        #arrow
+        {
+            /*下箭頭移動(因為不能用margin和padding實現，所以使用position)*/
+            position: relative;
+            /*相對於下面，向上移動*/
+            bottom: 35px;
+            /*相對於左側，向右移動*/
+            left: 40px;
+        }
+        /*移動整個search-form*/
+        #search-form
+        {
+            /*向左對齊*/
+            float: left;
+            /*向下移動(利用margin上部增加px)，向右亦是如此*/
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+        /*設定搜尋列*/
+        #search-field
+        {
+            /*邊框左邊設定為圓角(順序左上、右上、右下、左下)*/
+            border-radius: 3px 0 0 3px;
+            width: 630px;
+            height: 40px;
+            /*設定box-sizing讓我們所設定的寬高不變*/
+            box-sizing: border-box;
+        }
+        
+        /*定義搜尋列輸入框字體以及下拉選單邊框和字體*/
+        .text-field
+        {
+            font-size: 16px;
+            color: #767676;
+            
+            /*上右下左*/
+            padding: 10px 0 9px 8px;
+            
+            /*設置邊框*/
+            border: 1px solid #ddd;
+        }
+        
+        /*設定下拉選班邊框的圓角*/
+        #category-textfield
+        {
+            /*設置圓角(左上右上右下左下)*/
+            border-radius: 0 3px 3px 0;
+            /*上右下左*/
+            padding: 11px 10px 11px 10px;
+            
+            height: 40px;
+            width: 180px;
+            
+            /*設置顏色為白色*/
+            background-color: #fff;
+            
+            /*因為padding的關係所以會超出search-bar範圍，所以加入box-sizing*/
+            box-sizing: border-box;
+            
+            /*向左移動*/
+            margin-left: -4px;
+        }
+        /*設置選項元素*/
+        .option
+        {
+            /*無邊框*/
+            border: none;
+            
+            /*字體大小*/
+            font-size: 12px;
+            
+            width: 100%;
+            
+            /*透明的顏色*/
+            background-color: transparent;
+        }
+        /*設置高級搜索按鈕的部分*/
+        .btn-primary
+        {
+            font-size: 16px;
+            height: 40px;
+            /*字體粗細*/
+            font-weight: 500;
+            /*圓角*/
+            border-radius: 3px;
+            /*邊框去除*/
+            border: 0;
+            /*字體白色*/
+            color: #fff;
+            /*將按鈕變大(上右下左)*/
+            padding: 8px 19px 9px 19px;
+            /*設定顏色(漸變色)(線性變色到底部，從#0079bc到#00509d)*/
+            background: linear-gradient(to bottom, #0079bc ,#00509d);
+        }
+        /*設置滑鼠移至按鈕會變色*/
+        .btn-primary:hover
+        {
+            /*按鈕背景變色時的顏色*/
+            /*會發現這邊只能用background才會設定成功*/
+            /*background可以設置背景顏色、背景圖片、定位等*/
+            /*background-color只能設置背景顏色*/
+            background: #00509d;
+        }
+        #advanced-button
+        {
+            /*文字顏色灰色*/
+            color: #555555;
+            /*去掉底線*/
+            text-decoration: none;
+            
+            font-size: 11px;
+            
+            /*向右移動*/
+            margin-left: 10px;
+        }
+        /*設置滑鼠移至按鈕會變色*/
+        #advanced-button:hover
+        {
+            color: #065dBA;
+        }
+        
+        /*---------------------------Navigation Bar---------------------------*/
+        nav
+        {
+            width: 100%;
+            height: 35px;
+            
+            /*使用padding增加間距，因為如果用margin底色會不同*/
+            padding-top: 12px;
+        }
+        
+        .tb-border
+        {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        #navigation-bar
+        {
+            width: 100%;
+            height: 35px;
+            /*上右下左*/
+            padding: 10px 0 11px 0;
+            /*設置box-sizing讓所設置的大小都有確切，不忽略超出所設的高度35px*/
+            box-sizing: border-box;
+        }
+        .li-space
+        {
+            /*靠左*/
+            float: left;
+            padding: 0 2% 0 2%;
+        }
+        
+        .divider
+        {
+            /*務必加入float:left;不然會因為加入分隔線而自動換行*/
+            float: left;
+            
+            width: 1px;
+            height: 24px;
+            background: #ddd;
+            
+            /*使用margin來移動Today的右邊框(上右下左)*/
+            /*向上移動，使用負號來做移動*/
+            margin: -5px 20px 0 20px;
+        }
+        /*Today的部分*/
+        .active a
+        {
+            /*設成粗體*/
+            font-weight: bold;
+            /*設定底線*/
+            border-bottom: 2px solid #555;
+            /*用padding改變底線長短，但li.navItem a也有設定，所以導致無法改變*/
+            /*並加上important即可;把left和right都設成0就會縮短。*/
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            /*將底線向下移動*/
+            padding-bottom: 9px !important;
+        }
+        /*管理hover的動作*/
+        .active a:hover
+        {
+            /*設置滑鼠指向時，不會做改變*/
+            text-decoration: none !important;
+            /*設置顏色*/
+            color: #555 !important;
+        }
+        
+        /*---------------------------Advertisement廣告部分---------------------------*/
+        
+        #adSection
+        {
+            height: 402px;
+            /*為了增加與導覽的距離，使用padding(上右下左)*/
+            padding: 32px 0 32px 0;
+            
+        }
+        
+        #column1
+        {
+            float: left;
+            height: 402px;
+        }
+        
+        #column2
+        {
+            /*圖片的位置先設置為相對位置*/
+            position: relative;
+            
+            float: left;
+            height: 402px;
+            
+            width: 324px;
+            height: 402.8px;
+            
+        }
+        /*設定圖邊框*/
+        .add-border
+        {
+            border: 1px solid #ddd;
+            /*設置box-sizing來限制好圖片大小*/
+            box-sizing: border-box;
+        }
+        
+        /*為ad2、ad3設置絕對位置*/
+        ad2
+        {
+            position: absolute;
+            
+            /*相對於容器頂部和右側是零距離的*/
+            top: 0;
+            right: 0;
+        }
+        ad3
+        {
+            position: absolute;
+            
+            /*相對於容器底部和右側是零距離的*/
+            bottom: 0;
+            right: 0;
+        }
+        
+        
+        /*---------------------------Product Section產品部分---------------------------*/
+        
+        /*產品區域*/
+        #productSection
+        {
+            width: 100%;
+            /*此高度為標題到文章結尾*/
+            height: 647px;
+            
+            /*增加一個底部的空白部分*/
+            padding-bottom: 75px;
+            
+            /*由於標題上方有多餘的外邊距部分，所以使用overflow去除*/
+            overflow: hidden;
+        }
+        
+        /*副標題*/
+        .hero-heading
+        {
+            /*高度:標題到圖片的空間*/
+            height: 45px;
+            /*副標題的下邊框*/
+            border-bottom: 1px solid #ddd;
+            /*字體變細、變色*/
+            font-weight: 400;
+            color: #555;
+        }
+        /*顯示左右兩邊產品的部分*/
+        #show-product
+        {
+            /*為了讓product1、2可自由調整，先設成相對位置*/
+            position: relative;
+            
+            width: 100%;
+            height: 602.5px;
+        }
+        /*左側顯示產品的部分*/
+        .product-section
+        {
+            float: left;
+            width: 585px;
+            height: 602.5px;
+        }
+        /*左側產品圖片*/
+        .product-photo
+        {
+            width: 585px;
+            height: 420px;
+        }
+        /*左側產品第一部分設置*/
+        .photo-column1
+        {
+            float: left;
+            
+            width: 445px;
+            height: 420px;
+            /*大圖上左下有邊框(上右下左)*/
+            border-width: 1px 0 1px 1px;
+            border-color: #ddd;
+            border-style: solid;
+            
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        /*設置左側產品第一部份的圖片大小*/
+        #photo1
+        {
+            height: 418px;
+            
+            /*由於photo-column1的overflow導致圖片會被卡掉，所以移動圖片出限制範圍*/
+            position: relative;
+            /*左移動*/
+            left: -100px;
+            
+            overflow: hidden;
+        }
+        
+        .photo-column2
+        {
+            float: left;
+            
+            width: 140px;
+            height: 420px;
+            
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        /*設置column2的圖邊框*/
+        .thumb
+        {
+            width: 140px;
+            height: 140px;
+            
+            /*大圖左上右有邊框(上右下左)*/
+            border-width: 1px 1px 0 1px;
+            border-color: #ddd;
+            border-style: solid;
+            
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        /*因為thumb的邊框只設置左上右的邊框，所以我們用last-child的方式在最下面那個thumb加入下邊框*/
+        .thumb:last-child
+        {
+            /*將之設定為四邊皆有邊框*/
+            border-width: 1px 1px 1px 1px;
+        }
+        /*設置左側產品第二部份的圖片大小*/
+        .thumbnail
+        {
+            
+        }
+        /*另外設置左側產品第二部份的第一張圖片*/
+        #thumbnail-fix
+        {
+            position: relative;
+            /*相對於右邊移動20px*/
+            right: 20px;
+        }
+        
+        /*-------------------------Article---------------------------*/
+        article
+        {
+            color: #333333;
+        }
+        .title
+        {
+            font-weight: 400;
+            font-size: 26px;
+            
+            margin: 18px 0 10px 0;
+        }
+        .description-container
+        {
+            width: 370px;
+            height: 118px;
+        }
+        .product-details
+        {
+            font-weight: 400;
+            font-size: 16px;
+            /*行高*/
+            line-height: 1.5em;
+        }
+        /*設置read-more圖片*/
+        .read-more
+        {
+            /*設置顯示在同一行，因為span的關係所以導致圖片無法顯示*/
+            /*然而使用block即可出現，但並無顯示於文字之後，所以再加上inline*/
+            display: inline-block;
+            
+            width: 28px;
+            height: 28px;
+            background-image: url("readmore.png");
+            /*自動縮放圖片大小*/
+            background-size: cover;
+            
+            /*設置橫向對齊，使read more圖與文字對齊*/
+            vertical-align: middle;
+        }
+        /*設置right-col顯示於右側部分*/
+        .left-col
+        {
+            float: left;
+            width: 440px;
+        }
+        .right-col
+        {
+            float: right;
+            width: 140px;
+        }
+        
+        .right-col-text
+        {
+            text-align:center;
+            color:#333333;
+            font-size:14px;
+            font-weight:bold;
+        }
+        .right-col-container
+        {
+            padding-left:8px;
+            padding-right:8px;
+            
+            margin:0;
+            
+            list-style-type:none;
+            
+        }
+        .right-col-item
+        {
+            padding:18px 0;
+            
+            border-bottom:1px solid #ddd;
+        }
+        
+        .right-col-item:last-child
+        {
+            border: none;
+        }
+        
+        .right-col-item a:link
+        {
+            color: #0654BA;
+            text-decoration:none;
+        }
+        .right-col-item a:hover
+        {
+            color: #0654BA;
+            text-decoration:underline;
+        }
+        
+        /*-----------------------------Product 2----------------------------*/
+        #right-section
+        {
+            /*先設絕對位置*/
+            position: absolute;
+            /*再設定相對於右邊*/
+            right: 0;
+        }
+        #photo-adjust
+        {
+            height: 420px;
+        }
+        #thumbnail-adjust
+        {
+            height:200px;
+            position: relative;
+            
+            /*向上移動*/
+            bottom: 30px;
+        }
+        /*-----------------------------Daily Deals----------------------------*/
+        #daily-deals
+        {
+            width: 100%;
+            /*整個高度包含到下面collection的部分*/
+            height: 530px;
+            /*希望底部能有一些padding區域*/
+            padding-bottom: 75px;
+            /*在底部設至一條線*/
+            border-bottom: 1px solid #ddd;
+        }
+        /*設置大方框*/
+        .box
+        {
+            
+            /*設置padding讓每個小方框離大方框能有一段距離(上右下左)*/
+            padding: 25px 0 0 8px;
+            /*在橫向置中對齊*/
+            vertical-align: middle;
+            /*設置邊框、邊框內背景顏色與圓角*/
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 2px;
+            /*設置margin讓大方框下邊與collection部分有距離*/
+            margin-bottom: 80px;
+        }
+        /*設置小方框*/
+        .box-subcontent
+        {
+            /*向左對齊*/
+            float: left;
+            /*寬度*/
+            width: 190px;
+            /*方框之間的距離*/
+            margin: 0 24px;
+        }
+        /*設置方框內圖片的大小*/
+        .sale
+        {
+            width: 169px;
+        }
+        /*設定描述超連結部分*/
+        .details
+        {
+            width: 180px;
+            /*按照inline-block的顯示方式*/
+            display: inline-block;
+            
+            font-size: 14px;
+            padding: 8px 0 0 8px;
+            
+            /*文字設為黑色*/
+            color: black;
+            
+            /*去掉底線*/
+            text-decoration: none;
+        }
+
+        .details a:hover
+        {
+
+            color: #0654BA;
+            text-decoration:underline;
+        }
+        
+        .price
+        {
+            padding: 8px 0 0 8px;
+
+            /*外邊距設為0*/
+            margin: 0;
+        }
+        
+        /*---------------------------Pagination---------------------------*/
+        .pagination
+        {
+            /*居中*/
+            text-align: center;
+        }
+        .pagination-content
+        {
+            /*向下移動*/
+            padding-top: 20px;
+            
+            display: inline-block;
+        }
+        .pagination-content a
+        {
+            color: black;
+            float: left;
+            /*頁數間距*/
+            padding: 10px 16px;
+            
+            text-decoration: none;
+            /*製作動畫:背景0.3s變化*/
+            transition: background-color 0.3s;
+        }
+        /*如果是非激活狀態的超連結顏色*/
+        /*(此時設置會發現只有3的項目並未有背景顏色，因為只有3我們設active)*/
+        .pagination-content a:hover:not(.activ)
+        {
+            background-color: #ddd;
+        }
+        /*因為上面原因，我們另外給3設定默認顏色動畫*/
+        .pagination-content a.active
+        {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        /*---------------------------Collections---------------------------*/
+        
+        #collection
+        {
+            /*定義邊框*/
+            border: 1px dolid #ddd;
+            
+            background-color: white;
+            
+            border-radius: 2px;
+            /*居中顯示*/
+            text-align: center;
+            
+            /*文字顏色*/
+            color: #7777777;
+            
+            /*多出來的部分*/
+            box-sizing: border-box;
+
+        }
+        
+        #collection a
+        {
+            color: #0754BA;
+            /*底線去除*/
+            text-decoration: none;
+        }
+        
+        #collection a:hover
+        {
+            color: #0654BA;
+            /*底線在觸發時出現*/
+            text-decoration: underline;
+        }
+        
+        /*---------------------------Footer---------------------------*/
+        
+        footer
+        {
+            color: #777777;
+        }
+        
